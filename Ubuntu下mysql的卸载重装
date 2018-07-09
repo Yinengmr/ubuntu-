@@ -1,0 +1,52 @@
+Ubuntu下mysql的卸载重装
+转自：https://www.cnblogs.com/y-rong/p/7727801.html
+
+注：该方法是彻底删除ubuntu下面的文件，然后重新安装，更新root密码，所以mysql原数据会被删掉，所以一定一定要记得备份！！！！！！！！
+
+转自：http://blog.csdn.net/chudongfang2015/article/details/52154903(感谢)
+
+下面演示步骤：
+
+ 
+
+1.命令apt-get删除mysql
+
+　　sudo apt-get remove --purge mysql-\*  　　
+
+ 
+
+2.手动删除mysql剩余文件
+
+ 
+
+执行命令　　sudo find  / -name mysql -print  　　
+
+会显示出所有的含有mysql文件名的路径，如下：　　
+
+/var/lib/mysql  
+/var/lib/mysql/mysql  
+/var/log/mysql  
+/usr/bin/mysql  
+/usr/lib/mysql  
+/usr/share/mysql  
+/etc/mysql  
+/etc/init.d/mysql
+接下来一一删除：执行命令
+
+　　sudo    rm   -rf     /ect/init.d/mys　　ql
+
+直到删除完。
+
+到此已基本完全删除。
+
+ 
+
+3.重新安装　　
+
+　　　　　sudo apt-get install mysql-server mysql-client 
+
+安装时可能会报错，不用担心，继续再执行一遍命令：
+
+sudo apt-get remove --purge mysql-\*  
+sudo apt-get install mysql-server mysql-client 
+经过以上命令，就可以重新安装mysql了，也可以重置root密码，，小框框就出来了大笑。
